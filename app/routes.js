@@ -112,7 +112,7 @@ module.exports = function (app, passport, db) {
 
   app.post("/save", (req, res) => {
     db.collection("produce").save(
-      { name: req.body.name, season: req.body.season },
+      { name: req.body.name, season: req.body.season, like: 0 },
       (err, result) => {
         if (err) return console.log(err);
         console.log("saved to database");
@@ -121,12 +121,12 @@ module.exports = function (app, passport, db) {
     );
   });
 
-  app.put("/messages", (req, res) => {
-    db.collection("messages").findOneAndUpdate(
-      { name: req.body.name, msg: req.body.msg },
+  app.put("/like", (req, res) => {
+    db.collection("produce").findOneAndUpdate(
+      { like: req.body.like },
       {
         $set: {
-          thumbUp: req.body.thumbUp + 1,
+          like: req.body.like + 1,
         },
       },
       {
