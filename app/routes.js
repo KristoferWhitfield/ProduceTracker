@@ -123,8 +123,9 @@ module.exports = function (app, passport, db) {
 
   app.put("/like", (req, res) => {
     db.collection("produce").findOneAndUpdate(
-      { like: req.body.like },
+      { like: req.body.like},
       {
+
         $set: {
           like: req.body.like + 1,
         },

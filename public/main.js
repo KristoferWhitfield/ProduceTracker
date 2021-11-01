@@ -5,6 +5,8 @@ var favorite = document.getElementsByClassName("fas fa-heart");
 const deleteSaved = document.querySelectorAll(".deleteSaved")
 const savedProduce = document.querySelector(".savedProduce").querySelectorAll(".produceName")
 console.log(savedProduce)
+
+
 Array.from(save).forEach(function(element) {
       element.addEventListener('click', function(){
         const name = this.parentNode.querySelector('.produceName').innerText
